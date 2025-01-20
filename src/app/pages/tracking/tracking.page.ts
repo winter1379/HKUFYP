@@ -148,7 +148,7 @@ export class TrackingPage implements OnInit {
   }
 }
 
-// Define the NutritionItem interface here
+// Define the NutritionItem interface here haha
 interface NutritionItem {
   calories: number;
   protein_g: number;
