@@ -1,0 +1,79 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="blue">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Tracking</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Tracking</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="ion-padding">
+    <ion-item-divider>
+      <ion-label> Search </ion-label>
+    </ion-item-divider>
+    <ion-item>
+      <ion-label position="floating">Search Nutrition Info</ion-label>
+      <ion-input [(ngModel)]="searchQuery" name="searchQuery" placeholder="e.g., 1 apple" required></ion-input>
+    </ion-item>
+    <ion-button expand="full" (click)="searchNutrition()" color="blue">Search</ion-button>
+
+    <ion-item-divider>
+      <ion-label> OR Manual input</ion-label>
+    </ion-item-divider>
+    <form #mealForm="ngForm" (ngSubmit)="saveMeal(mealForm)">
+      <ion-item>
+        <ion-label position="floating">Meal Name</ion-label>
+        <ion-input [(ngModel)]="meal.item" name="item" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Calories</ion-label>
+        <ion-input [(ngModel)]="meal.calories" name="calories" type="number" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Proteins (g)</ion-label>
+        <ion-input [(ngModel)]="meal.proteins" name="proteins" type="number" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Carbohydrates (g)</ion-label>
+        <ion-input [(ngModel)]="meal.carbs" name="carbs" type="number" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Fats (g)</ion-label>
+        <ion-input [(ngModel)]="meal.fats" name="fats" type="number" required></ion-input>
+      </ion-item>
+      <ion-button expand="full" type="submit" color="blue">Save Meal</ion-button>
+    </form>
+  </div>
+  <div class="ion-padding">
+    <ion-item>
+      <ion-label>Select Date</ion-label>
+      <ion-datetime-button datetime="datetime"></ion-datetime-button>
+      <ion-modal keepContentsMounted="true">
+        <ng-template>
+          <ion-datetime id="datetime" display-format="YYYY-MM-DD" [(ngModel)]="selectedDate" (ionChange)="filterMealsByDate()"></ion-datetime>
+        </ng-template>
+      </ion-modal>
+    </ion-item>
+    <ion-card *ngFor="let record of filteredMeals; let i = index">
+      <ion-card-header>
+        <ion-card-title>{{ record.item }}</ion-card-title>
+        <ion-card-subtitle>{{ record.date }}</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <p>Calories: {{ record.calories }}</p>
+        <p>Proteins: {{ record.proteins }}g</p>
+        <p>Carbohydrates: {{ record.carbs }}g</p>
+        <p>Fats: {{ record.fats }}g</p>
+        <ion-button color="primary" (click)="editMeal(i)">Edit</ion-button>
+        <ion-button color="danger" (click)="confirmDeleteMeal(i)">Delete</ion-button>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

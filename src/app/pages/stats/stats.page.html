@@ -1,0 +1,54 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="blue">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Stats</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Stats</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="ion-padding">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Calories Intake</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <canvas #caloriesCanvas></canvas>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Proteins Intake</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <canvas #proteinsCanvas></canvas>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Fats Intake</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <canvas #fatsCanvas></canvas>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Carbohydrates Intake</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <canvas #carbsCanvas></canvas>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>
