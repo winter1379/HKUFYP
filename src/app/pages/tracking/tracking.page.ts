@@ -12,7 +12,7 @@ import axios from 'axios';
 export class TrackingPage implements OnInit {
 
   meal: any = {
-    date: '', // Initialize with empty string
+    date: '', 
     item: '',
     calories: '',
     proteins: '',
@@ -23,7 +23,7 @@ export class TrackingPage implements OnInit {
   nutritionInfo: any = null;
   meals: any[] = [];
   filteredMeals: any[] = [];
-  selectedDate: string = new Date().toISOString().split('T')[0]; // Set selected date to current date in YYYY-MM-DD format
+  selectedDate: string = new Date().toISOString().split('T')[0];
   editIndex: number = -1;
 
   constructor(private storage: Storage, private alertController: AlertController) { }
@@ -42,12 +42,12 @@ export class TrackingPage implements OnInit {
     if (form.valid) {
       let mealWithDate;
       if (this.editIndex >= 0) {
-        // Preserve the original date when editing
+        
         mealWithDate = { ...this.meal, date: this.meals[this.editIndex].date };
         this.meals[this.editIndex] = mealWithDate;
         this.editIndex = -1;
       } else {
-        // Use current date for new meals in YYYY-MM-DD format
+        
         mealWithDate = { ...this.meal, date: new Date().toISOString().split('T')[0] };
         this.meals.unshift(mealWithDate);
       }
@@ -69,7 +69,7 @@ export class TrackingPage implements OnInit {
       const apiUrl = `https://api.calorieninjas.com/v1/nutrition?query=${this.searchQuery}`;
       const headers = { 'X-Api-Key': apiKey };
 
-      // Add type annotation for the API response
+    
       const response = await axios.get<{ items: NutritionItem[] }>(apiUrl, { headers });
 
       if (response.data.items && response.data.items.length > 0) {
@@ -110,7 +110,7 @@ export class TrackingPage implements OnInit {
   editMeal(index: number) {
     this.meal = { ...this.meals[index] };
     this.editIndex = index;
-    this.selectedDate = this.meal.date; // Ensure selected date matches the meal date
+    this.selectedDate = this.meal.date; 
   }
 
   async confirmDeleteMeal(index: number) {
@@ -148,7 +148,7 @@ export class TrackingPage implements OnInit {
   }
 }
 
-// Define the NutritionItem interface here haha
+
 interface NutritionItem {
   calories: number;
   protein_g: number;

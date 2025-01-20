@@ -19,7 +19,7 @@ export class AiPage implements OnInit {
   async askNutritionQuestion(form: NgForm) {
     if (form.valid) {
       try {
-        const apiKey = 'sk-proj-vQhox7r52H4rvVU3NaN8jKc6dkL1dov_jJXV03eUeyh7TSbcbjWGqlOy3Pbvzi5tQwRP_Ri6T3BlbkFJjHNHstiM7d8YiCOkD9gBETn7nm-mDk1ZlSbSxPl0Yku-gIFHMj1_7O9pxgVz_r-rxgz--PgDQA'; // Replace with your OpenAI API key
+        const apiKey = 'sk-proj-vQhox7r52H4rvVU3NaN8jKc6dkL1dov_jJXV03eUeyh7TSbcbjWGqlOy3Pbvzi5tQwRP_Ri6T3BlbkFJjHNHstiM7d8YiCOkD9gBETn7nm-mDk1ZlSbSxPl0Yku-gIFHMj1_7O9pxgVz_r-rxgz--PgDQA'; 
         const apiUrl = 'https://api.openai.com/v1/completions';
         
         const headers = {
@@ -28,7 +28,7 @@ export class AiPage implements OnInit {
         };
 
         const data = {
-          model: 'text-davinci-003', // Use the appropriate model
+          model: 'text-davinci-003', 
           prompt: this.question,
           max_tokens: 150
         };
